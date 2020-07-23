@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-pre
+  namespace: argocd
+spec:
+  destination:
+    namespace: pre
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/danielinclouds/cd-with-argo-env-pre.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
